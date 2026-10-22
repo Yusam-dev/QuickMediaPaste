@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QuickMediaPaste - CEP manifest (CEP 11+, Premiere Pro 2022 and newer)
+
+  Notes on how CEP actually works, because a few common assumptions are wrong:
+
+  * There is no EnableNodeScripting element in the CEP manifest schema. Node.js is
+    enabled per extension with the CEF command-line parameters enable-nodejs and
+    mixed-context (see the CEFCommandLine block below, where they carry their two
+    leading hyphens). Those two parameters give main.js access to require(), fs,
+    https, child_process and so on.
+  * CEP has no permission list for network or file access. Once Node.js is enabled the
+    panel runs with the same OS rights as Premiere Pro itself, so the two allow-file-access
+    parameters are the only extra ones needed.
+  * The file must be installed as <extension folder>/CSXS/manifest.xml.
+-->
+<ExtensionManifest
+    Version="7.0"
+    ExtensionBundleId="com.quickmediapaste"
+    ExtensionBundleVersion="1.15.1"
+    ExtensionBundleName="QuickMediaPaste"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Author>Yusam</Author>
+  <Abstract>Paste images, video, audio and media URLs from the clipboard straight onto the active Premiere Pro timeline.</Abstract>
+
+  <ExtensionList>
+    <Extension Id="com.quickmediapaste.panel" Version="1.15.1" />
+  </ExtensionList>
+
+  <ExecutionEnvironment>
+    <HostList>
+      <!-- PPRO 22.0 (Premiere Pro 2022) through every later release. -->
+      <Host Name="PPRO" Version="[22.0,99.9]" />
+    </HostList>
+    <LocaleList>
+      <Locale Code="All" />
+    </LocaleList>
+    <RequiredRuntimeList>
+      <RequiredRuntime Name="CSXS" Version="11.0" />
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+
+  <DispatchInfoList>
+    <Extension Id="com.quickmediapaste.panel">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <ScriptPath>./hostscript.jsx</ScriptPath>
+          <CEFCommandLine>
+            <Parameter>--enable-nodejs</Parameter>
+            <Parameter>--mixed-context</Parameter>
+            <Parameter>--allow-file-access</Parameter>
+            <Parameter>--allow-file-access-from-files</Parameter>
+          </CEFCommandLine>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>true</AutoVisible>
+        </Lifecycle>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>QuickMediaPaste</Menu>
+          <Geometry>
+            <Size>
+              <Height>560</Height>
+              <Width>380</Width>
+            </Size>
+            <MinSize>
+              <Height>340</Height>
+              <Width>240</Width>
+            </MinSize>
+            <MaxSize>
+              <Height>2400</Height>
+              <Width>1400</Width>
+            </MaxSize>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>
