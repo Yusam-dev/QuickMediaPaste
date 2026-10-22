@@ -1,4 +1,4 @@
-# QuickMediaPaste v1.15 — لصق الوسائط من الحافظة على تايم لاين Premiere Pro
+<img width="690" height="390" alt="Sequence 01" src="https://github.com/user-attachments/assets/b81beff2-bc58-44d4-a821-6e1fa336701e" /># QuickMediaPaste v1.15 — لصق الوسائط من الحافظة على تايم لاين Premiere Pro
 
 **تطوير: Yusam**
 
@@ -18,9 +18,13 @@
 - **على مسار فاضي (Overwrite):** بينحط على أول مسار فاضي ولا يمسح شي. **إدراج (Insert):** بيزيح اللي بعده.
 - الملفات بتنحفظ جنب المشروع بمجلد `_PastedMedia`.
 
+
 ## v1.6 — كل شي بيتلصق عند المؤشر
 | المنسوخ | النتيجة |
 |---|---|
+
+<img width="690" height="390" alt="Sequence 01" src="https://github.com/user-attachments/assets/87b30259-62c6-4652-9967-29566fdf91ac" />
+
 | صورة / لقطة شاشة / PSD / AI | تنستورد وتنحط عند المؤشر على أول مسار فاضي |
 | **مجلد كامل** | بيتفتح (لحد 4 مستويات) وملفاته الوسائط بتنرتب بالاسم (1,2,10) ورا بعض على التايم لاين |
 | **MOGRT** | بينحط عبر importMGT على أول مسار فيديو فاضي |
